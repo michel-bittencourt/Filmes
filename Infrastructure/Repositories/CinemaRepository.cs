@@ -20,7 +20,7 @@ public class CinemaRepository : GeneralRepository, ICinemaRepository
         return cinemas;
     }
 
-    public async Task<Cinema?> GetCinemaAsync(int? id)
+    public async Task<Cinema?> GetCinemaByIdAsync(int? id)
     {
         Cinema? cinema = await _context.Cinemas.SingleOrDefaultAsync(cinema => cinema.Id == id);
 

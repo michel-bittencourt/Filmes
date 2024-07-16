@@ -1,4 +1,4 @@
-﻿using Application.DTO;
+﻿using Application.DTO.Filme;
 using Application.Interface;
 using AutoMapper;
 using Domain.Entities;

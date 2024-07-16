@@ -14,7 +14,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("FilmesConnectionDb"), b =>
+            options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString("FilmesConnectionDb"), b =>
                 b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
         services.AddScoped<IGeneralRepository, GeneralRepository>();
@@ -22,6 +22,15 @@ public static class DependencyInjection
 
         services.AddScoped<IFilmeRepository, FilmeRepository>();
         services.AddScoped<IFilmeService, FilmeService>();
+
+        services.AddScoped<ICinemaRepository, CinemaRepository>();
+        services.AddScoped<ICinemaService, CinemaService>();
+
+        services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+        services.AddScoped<IEnderecoService, EnderecoService>();
+
+        services.AddScoped<ISessaoRepository, SessaoRepository>();
+        services.AddScoped<ISessaoService, SessaoService>();
 
         return services;
     }

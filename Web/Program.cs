@@ -1,5 +1,6 @@
 using IoC;
 using Microsoft.AspNetCore.Http.Json;
+using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -19,6 +20,12 @@ builder.Services.AddSwaggerGen(s =>
 });
 builder.Services.Configure<JsonOptions>(options =>
     options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
 
 var app = builder.Build();
 

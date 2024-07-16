@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTO;
+namespace Application.DTO.Filme;
 
-public record CreateFilmeDTO
+public record UpdateFilmeDTO
 {
     [Required]
     [MinLength(2, ErrorMessage = "O Titulo deve ter 2 ou mais caracteres.")]

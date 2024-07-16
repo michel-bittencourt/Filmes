@@ -8,9 +8,9 @@ public class CinemaConfiguration : IEntityTypeConfiguration<Cinema>
 {
     public void Configure(EntityTypeBuilder<Cinema> builder)
     {
-        builder.HasKey(x => x.Id);
+        builder.HasKey(c => c.Id);
 
-        builder.Property(x => x.Nome)
+        builder.Property(c => c.Nome)
                .IsRequired();
     }
 }

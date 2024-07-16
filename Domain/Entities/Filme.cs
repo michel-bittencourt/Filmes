@@ -2,8 +2,15 @@
 
 namespace Domain.Entities;
 
-public sealed class Filme : Entity
+public class Filme : Entity
 {
+    public Filme(string titulo, string genero, float duracao)
+    {
+        Titulo = titulo;
+        Genero = genero;
+        Duracao = duracao;
+    }
+
     [Required]
     [MinLength(2, ErrorMessage = "O Titulo deve ter 2 ou mais caracteres.")]
     public string Titulo { get; private set; }
@@ -16,10 +23,6 @@ public sealed class Filme : Entity
     [Range(0.1, double.MaxValue, ErrorMessage = "A duração deve ser maior que 0.")]
     public float Duracao { get; private set; }
 
-    public Filme(string titulo, string genero, float duracao)
-    {
-        Titulo = titulo;
-        Genero = genero;
-        Duracao = duracao;
-    }
+    public virtual ICollection<Sessao> Sessoes { get; set; } = new List<Sessao>();
+
 }

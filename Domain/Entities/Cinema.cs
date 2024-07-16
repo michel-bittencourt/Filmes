@@ -1,11 +1,21 @@
-﻿namespace Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public sealed class Cinema : Entity
+namespace Domain.Entities;
+
+public class Cinema : Entity
 {
-    public string Nome { get; private set; }
-
     public Cinema(string nome)
     {
         Nome = nome;
     }
+
+    [Required]
+    [MinLength(2, ErrorMessage = "O Nome deve ter 2 ou mais caracteres.")]
+    public string Nome { get; private set; }
+
+    public int EnderecoId { get; set; }
+    public virtual Endereco Endereco { get; set; }
+
+    public virtual ICollection<Sessao> Sessoes { get; set; } = new List<Sessao>();
+
 }

@@ -1,12 +1,12 @@
-﻿using Application.DTO;
+﻿using Application.DTO.Filme;
 using AutoMapper;
 using Domain.Entities;
 
 namespace Application.Mappings;
 
-public class DomainToDTOMappingProfile : Profile
+public class FilmeProfile : Profile
 {
-    public DomainToDTOMappingProfile()
+    public FilmeProfile()
     {
         CreateMap<CreateFilmeDTO, Filme>().ReverseMap();
         CreateMap<UpdateFilmeDTO, Filme>().ReverseMap();

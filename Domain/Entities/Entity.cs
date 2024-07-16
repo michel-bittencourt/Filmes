@@ -5,5 +5,5 @@ namespace Domain.Entities;
 public abstract class Entity
 {
     [Key]
-    public int Id { get; private set; }
+    public int Id { get; set; }
 }
